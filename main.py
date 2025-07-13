@@ -1,7 +1,6 @@
 __version__ = "0.1.0"
 
 from utils import *
-PIPATH = get_pip_path_via_import()
 
 try:
     from nuitka import Version as nkver
@@ -13,7 +12,7 @@ try:
         return False
 except ImportError:
     print("检测到未安装Nuitka，正在尝试安装...")
-    os.system()
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "nuitka"])
 
 class Arg:
     def __init__(self, name, have_value=False, value=None):

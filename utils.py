@@ -4,24 +4,10 @@ import os
 import json
 import subprocess
 import re
-import pip
+
 from packaging import version
 from typing import Tuple, Optional
 from pathlib import Path
-
-def get_pip_path_via_import() -> str:
-    """通过pip模块定位pip可执行文件"""
-    pip_dir = Path(pip.__file__).parent.parent
-    
-    if sys.platform == "win32":
-        pip_path = pip_dir / "Scripts" / "pip.exe"
-    else:
-        pip_path = pip_dir / "bin" / "pip"
-    
-    if not pip_path.exists():
-        raise FileNotFoundError(f"pip not found at: {pip_path}")
-    
-    return str(pip_path.resolve())
 
 with open("config.json", "r", encoding="utf-8") as f:
     cfg = json.load(f)
