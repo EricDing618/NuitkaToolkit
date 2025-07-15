@@ -9,7 +9,7 @@ from packaging import version
 from typing import Tuple, Optional
 from pathlib import Path
 
-with open("config.json", "r", encoding="utf-8") as f:
+with open("settings.json", "r", encoding="utf-8") as f:
     cfg = json.load(f)
 
 COMPAT = {
